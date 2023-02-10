@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.model.DugmeKlotKlasa;
+import com.example.android.recyclerview.databinding.RecyclerViewFragBinding;
 
 /**
  * Demonstrates the use of {@link RecyclerView} with a {@link LinearLayoutManager} and a
@@ -40,12 +41,10 @@ public class RecyclerViewFragment extends Fragment {
 	private static final int SPAN_COUNT = 2;
 	private static final int DATASET_COUNT = 60;
 	protected LayoutManagerType layoutManagerType;
-	protected RadioButton rb_layoutMgr_lin;
-	protected RadioButton rb_layoutMgr_grid;
-	protected RecyclerView recyclerView;
 	protected CustomAdapter customAdapter;
 	protected RecyclerView.LayoutManager layoutManager;
 	protected String[] dataset;
+	RecyclerViewFragBinding binding;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,11 +54,9 @@ public class RecyclerViewFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.recycler_view_frag, container, false);
-		rootView.setTag(TAG);
-
-		// BEGIN_INCLUDE(initializeRecyclerView)
-		recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+		binding = RecyclerViewFragBinding.inflate(inflater, container, false);
+		View rootView = binding.getRoot();
+		binding.getRoot().setTag(TAG);
 
 		// LinearLayoutManager is used here, this will layout the elements in a similar fashion
 		// to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
@@ -74,30 +71,25 @@ public class RecyclerViewFragment extends Fragment {
 		}
 		setRecyclerViewLayoutManager(layoutManagerType);
 
-//		customAdapter = new CustomAdapter(dataset);
-//        recyclerView.setAdapter(customAdapter);
-
         AdapterDugme adpDugme = new AdapterDugme(initDatasetDugme());
-		recyclerView.setAdapter(adpDugme);
+		binding.recyclerView.setAdapter(adpDugme);
 		// END_INCLUDE(initializeRecyclerView)
 
-		rb_layoutMgr_lin = (RadioButton) rootView.findViewById(R.id.linear_layout_rb);
-		rb_layoutMgr_lin.setOnClickListener(new View.OnClickListener() {
+		binding.linearLayoutRb.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER);
 			}
 		});
 
-		rb_layoutMgr_grid = (RadioButton) rootView.findViewById(R.id.grid_layout_rb);
-		rb_layoutMgr_grid.setOnClickListener(new View.OnClickListener() {
+		binding.gridLayoutRb.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				setRecyclerViewLayoutManager(LayoutManagerType.GRID_LAYOUT_MANAGER);
 			}
 		});
 
-		return rootView;
+		return binding.getRoot();
 	}
 
 	/**
@@ -109,8 +101,8 @@ public class RecyclerViewFragment extends Fragment {
 		int scrollPosition = 0;
 
 		// If a layout manager has already been set, get current scroll position.
-		if (recyclerView.getLayoutManager() != null) {
-			scrollPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+		if (binding.recyclerView.getLayoutManager() != null) {
+			scrollPosition = ((LinearLayoutManager) binding.recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
 		}
 
 		switch (layoutManagerType) {
@@ -127,8 +119,8 @@ public class RecyclerViewFragment extends Fragment {
 				this.layoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 		}
 
-		recyclerView.setLayoutManager(layoutManager);
-		recyclerView.scrollToPosition(scrollPosition);
+		binding.recyclerView.setLayoutManager(layoutManager);
+		binding.recyclerView.scrollToPosition(scrollPosition);
 	}
 
 	@Override

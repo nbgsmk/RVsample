@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.common.logger.Log;
 import com.example.android.model.DugmeKlotKlasa;
+import com.example.android.recyclerview.databinding.RecyclerViewFragBinding;
 
 /**
  * Provide views to RecyclerView with data from mDataSet.
@@ -53,6 +54,7 @@ public class AdapterDugme extends RecyclerView.Adapter<AdapterDugme.ViewHolder> 
 					Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
 				}
 			});
+
 			textView = (TextView) v.findViewById(R.id.textView);
 			button = (Button) v.findViewById(R.id.button);
 			button.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +102,7 @@ public class AdapterDugme extends RecyclerView.Adapter<AdapterDugme.ViewHolder> 
 	// Replace the contents of a view (invoked by the layout manager)
 	@Override
 	public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+
 		Log.d(TAG, "Element " + position + " set.");
 
 		// Get element from your dataset at this position and replace the contents of the view

@@ -65,6 +65,10 @@ android {
 		androidTest.java.srcDirs = ['tests/src']
 
 	}
+	buildFeatures {
+		viewBinding = true
+	}
+
 	namespace 'com.example.android.recyclerview'
 	buildToolsVersion '33.0.2'
 
