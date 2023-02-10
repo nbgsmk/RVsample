@@ -52,8 +52,8 @@ public class MainActivity extends SampleActivityBase {
 
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            RecyclerViewFragment fragment = new RecyclerViewFragment();
-            transaction.replace(R.id.sample_content_fragment, fragment);
+            RecyclerViewFragment rvFragment = new RecyclerViewFragment();
+            transaction.replace(R.id.sample_content_fragment, rvFragment);
             transaction.commit();
         }
     }
@@ -103,8 +103,7 @@ public class MainActivity extends SampleActivityBase {
         logWrapper.setNext(msgFilter);
 
         // On screen logging via a fragment with a TextView.
-        LogFragment logFragment = (LogFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.log_fragment);
+        LogFragment logFragment = (LogFragment) getSupportFragmentManager().findFragmentById(R.id.log_fragment);
         msgFilter.setNext(logFragment.getLogView());
 
         Log.i(TAG, "Ready");

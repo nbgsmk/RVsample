@@ -16,21 +16,23 @@
 
 package com.example.android.recyclerview;
 
-import com.example.android.common.logger.Log;
-
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.android.common.logger.Log;
+import com.example.android.model.DugmeKlotKlasa;
+
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-    private static final String TAG = "CustomAdapter";
+public class AdapterDugme extends RecyclerView.Adapter<AdapterDugme.ViewHolder> {
+    private static final String TAG = "AdapterDugme";
 
-    private final String[] dataset;
+    private final DugmeKlotKlasa[] dataset;
 
     // BEGIN_INCLUDE(recyclerViewSampleViewHolder)
     /**
@@ -62,7 +64,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
-    public CustomAdapter(String[] dataSet) {
+    public AdapterDugme(DugmeKlotKlasa[] dataSet) {
         dataset = dataSet;
     }
 
@@ -85,7 +87,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        viewHolder.getTextView().setText(dataset[position]);
+        viewHolder.getTextView().setText(dataset[position].getIme() + " / " + dataset[position].getPrezime());
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
