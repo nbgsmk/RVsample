@@ -150,7 +150,7 @@ public class RecyclerViewFragment extends Fragment {
 	}
 
 	private DugmeKlotKlasa[] initDatasetDugme() {
-        DugmeKlotKlasa[] dsd = new DugmeKlotKlasa[44];
+        DugmeKlotKlasa[] dsd = new DugmeKlotKlasa[90];
         for (int i = 0; i < dsd.length; i++) {
             dsd[i] = new DugmeKlotKlasa();
         }
