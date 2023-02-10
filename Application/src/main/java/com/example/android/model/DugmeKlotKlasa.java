@@ -2,27 +2,27 @@ package com.example.android.model;
 
 public class DugmeKlotKlasa {
     private static int brojac = 0;
-    private String ime, prezime;
+    private String pise, salje;
 
     public DugmeKlotKlasa() {
-        this.ime = "ime " + brojac;
-        this.prezime = "prezime " + brojac;
+        this.pise = "pise " + brojac;
+        this.salje = "salje " + brojac;
         brojac++;
     }
 
-    public String getIme() {
-        return ime;
+    public String getPise() {
+        return pise;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
+    public void setPise(String pise) {
+        this.pise = pise;
     }
 
-    public String getPrezime() {
-        return prezime;
+    public String getSalje() {
+        return salje;
     }
 
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
+    public void setSalje(String salje) {
+        this.salje = salje;
     }
 }

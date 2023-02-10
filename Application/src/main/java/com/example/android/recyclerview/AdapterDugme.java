@@ -19,6 +19,7 @@ package com.example.android.recyclerview;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +41,7 @@ public class AdapterDugme extends RecyclerView.Adapter<AdapterDugme.ViewHolder> 
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private final Button button;
 
         public ViewHolder(View v) {
             super(v);
@@ -51,10 +53,15 @@ public class AdapterDugme extends RecyclerView.Adapter<AdapterDugme.ViewHolder> 
                 }
             });
             textView = (TextView) v.findViewById(R.id.textView);
+            button = (Button) v.findViewById(R.id.button);
         }
 
         public TextView getTextView() {
             return textView;
+        }
+
+        public Button getButton() {
+            return button;
         }
     }
     // END_INCLUDE(recyclerViewSampleViewHolder)
@@ -87,7 +94,8 @@ public class AdapterDugme extends RecyclerView.Adapter<AdapterDugme.ViewHolder> 
 
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        viewHolder.getTextView().setText(dataset[position].getIme() + " / " + dataset[position].getPrezime());
+        viewHolder.getTextView().setText(dataset[position].getPise());
+        viewHolder.getButton().setText(dataset[position].getSalje());
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
