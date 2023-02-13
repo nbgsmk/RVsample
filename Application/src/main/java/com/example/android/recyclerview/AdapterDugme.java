@@ -23,11 +23,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.common.logger.Log;
 import com.example.android.model.DugmeKlotKlasa;
-import com.example.android.recyclerview.databinding.RecyclerViewFragBinding;
+import com.example.android.recyclerview.databinding.RowItemBinding;
 
 /**
  * Provide views to RecyclerView with data from mDataSet.
@@ -91,6 +92,7 @@ public class AdapterDugme extends RecyclerView.Adapter<AdapterDugme.ViewHolder> 
 	// Create new views (invoked by the layout manager)
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+//		RowItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.row_item, false))
 		// Create a new view.
 		View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item, viewGroup, false);
 

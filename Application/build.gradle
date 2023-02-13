@@ -27,8 +27,7 @@ dependencies {
 
 
 	implementation 'androidx.recyclerview:recyclerview:1.2.1'
-
-
+    implementation 'androidx.databinding:databinding-runtime:7.1.2'
 
 
 }

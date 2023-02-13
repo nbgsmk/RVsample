@@ -55,7 +55,7 @@ public class RecyclerViewFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		binding = RecyclerViewFragBinding.inflate(inflater, container, false);
-		View rootView = binding.getRoot();
+//		View rootView = binding.getRoot();
 		binding.getRoot().setTag(TAG);
 
 		// LinearLayoutManager is used here, this will layout the elements in a similar fashion

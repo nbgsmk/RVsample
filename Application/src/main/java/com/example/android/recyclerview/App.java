@@ -30,6 +30,7 @@ import com.example.android.common.logger.Log;
 import com.example.android.common.logger.LogFragment;
 import com.example.android.common.logger.LogWrapper;
 import com.example.android.common.logger.MessageOnlyLogFilter;
+import com.example.android.recyclerview.databinding.AppBinding;
 
 /**
  * A simple launcher activity containing a summary sample description, sample log and a custom
@@ -38,17 +39,20 @@ import com.example.android.common.logger.MessageOnlyLogFilter;
  * For devices with displays with a width of 720dp or greater, the sample log is always visible,
  * on other devices it's visibility is controlled by an item on the Action Bar.
  */
-public class MainActivity extends SampleActivityBase {
+public class App extends SampleActivityBase {
 
-	public static final String TAG = "MainActivity";
+	public static final String TAG = "App";
 
 	// Whether the Log Fragment is currently shown
 	private boolean logShown;
 
+	AppBinding binding;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		binding = AppBinding.inflate(getLayoutInflater());
+		setContentView(binding.getRoot());
 
 		if (savedInstanceState == null) {
 			FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -75,17 +79,16 @@ public class MainActivity extends SampleActivityBase {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
-			case R.id.menu_toggle_log:
-				logShown = !logShown;
-				ViewAnimator output = (ViewAnimator) findViewById(R.id.sample_output);
-				if (logShown) {
-					output.setDisplayedChild(1);
-				} else {
-					output.setDisplayedChild(0);
-				}
-				supportInvalidateOptionsMenu();
-				return true;
+		if (item.getItemId() == R.id.menu_toggle_log) {
+			logShown = !logShown;
+			ViewAnimator output = (ViewAnimator) findViewById(R.id.sample_output);
+			if (logShown) {
+				output.setDisplayedChild(1);
+			} else {
+				output.setDisplayedChild(0);
+			}
+			supportInvalidateOptionsMenu();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -107,5 +110,11 @@ public class MainActivity extends SampleActivityBase {
 		msgFilter.setNext(logFragment.getLogView());
 
 		Log.i(TAG, "Ready");
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+//		binding = null;
 	}
 }
